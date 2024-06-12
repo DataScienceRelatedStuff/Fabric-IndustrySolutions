@@ -1,0 +1,54 @@
+{
+    "name": "NLP results entity relations column configuration",
+    "description": "Entity relations define the relationship between terms extracted from an unstructured text using TA4H. Always a binary relationship",
+    "retainSourceColumns": false,
+    "extendWithDefaultRules": false,
+    "explode": {
+        "name": "nlp_expl",
+        "expression": "result.entity_relations"
+    },
+    "columns": [
+        {
+            "name": "id",
+            "style": "expr",
+            "expression": "concat(result.id, '_' ,nlp_expl.relation_type, '_', nlp_expl.roles[0].entity.offset, '_', nlp_expl.roles[1].entity.offset)"
+        },
+        {
+            "name": "relation_type",
+            "style": "col",
+            "expression": "nlp_expl.relation_type"
+        },
+        {
+            "name": "entity1_role_name",
+            "style": "expr",
+            "expression": "nlp_expl.roles[0].name"
+        },
+        {
+            "name": "entity2_role_name",
+            "style": "expr",
+            "expression": "nlp_expl.roles[1].name"
+        },
+        {
+            "name": "entity1_id",
+            "style": "expr",
+            "expression": "concat(result.id, '_' ,nlp_expl.roles[0].entity.offset)"
+        },
+        {
+            "name": "entity2_id",
+            "style": "expr",
+            "expression": "concat(result.id, '_' , nlp_expl.roles[1].entity.offset)"
+        },
+        {
+            "name": "parent_meta_lastUpdated",
+            "style": "col",
+            "expression": "meta_lastUpdated"
+        }
+    ],
+    "normalization": [
+        {
+          "name": "parent_meta_lastUpdated",
+          "type": "date",
+          "preservePreviousValue": false
+        }
+    ]
+}

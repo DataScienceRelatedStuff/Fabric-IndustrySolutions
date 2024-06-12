@@ -1,0 +1,69 @@
+{
+	"$schema": "https://industryaidata.blob.core.windows.net/dtt-common/dtt_schemas/1.0/referenceMapping_schema.json",
+	"values": [
+		{
+			"targetKey": 1,
+			"sourceKeys": [ 1 ]
+		},
+		{
+			"targetKey": 2,
+			"sourceKeys": [ 2 ]
+		},
+		{
+			"targetKey": 3,
+			"sourceKeys": [ 3 ]
+		},
+		{
+			"targetKey": 4,
+			"sourceKeys": [ 4 ]
+		},
+		{
+			"targetKey": 5,
+			"sourceKeys": [ 5 ]
+		},
+		{
+			"targetKey": 6,
+			"sourceKeys": [ 6 ]
+		},
+		{
+			"targetKey": 7,
+			"sourceKeys": [ 7 ]
+		},
+		{
+			"targetKey": 8,
+			"sourceKeys": [ 8,534121001 ]
+		},
+		{
+			"targetKey": 9,
+			"sourceKeys": [ 534121000 ]
+		},
+		{
+			"targetKey": 10,
+			"sourceKeys": [ 534121002 ]
+		},
+		{
+			"targetKey": 11,
+			"sourceKeys": [ 534121003 ]
+		},
+		{
+			"targetKey": 12,
+			"sourceKeys": [ 534121004 ]
+		},
+		{
+			"targetKey": 13,
+			"sourceKeys": [ 534121005 ]
+		},
+		{
+			"targetKey": 14,
+			"sourceKeys": [ "Inflow" ]
+		},
+		{
+			"targetKey": 15,
+			"sourceKeys": [ "Processed" ]
+		},
+		{
+			"targetKey": 16,
+			"sourceKeys": [ "EntryProcessed" ]
+		}
+	]
+}

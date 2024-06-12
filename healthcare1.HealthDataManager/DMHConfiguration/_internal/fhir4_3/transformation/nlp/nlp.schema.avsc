@@ -1,0 +1,285 @@
+{
+  "type": "record",
+  "name": "topLevelRecord",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["string", "null"]
+    },
+    {
+      "name": "content_attachment_data",
+      "type": ["string", "null"]
+    },
+    {
+      "name": "meta_lastUpdated",
+      "type": ["string", "null"]
+    },
+    {
+      "name": "result",
+      "type": [
+        {
+          "type": "record",
+          "name": "result",
+          "namespace": "topLevelRecord",
+          "fields": [
+            {
+              "name": "id",
+              "type": ["string", "null"]
+            },
+            {
+              "name": "error",
+              "type": [
+                {
+                  "type": "record",
+                  "name": "error",
+                  "namespace": "topLevelRecord.result",
+                  "fields": [
+                    {
+                      "name": "code",
+                      "type": ["string", "null"]
+                    },
+                    {
+                      "name": "message",
+                      "type": ["string", "null"]
+                    }
+                  ]
+                },
+                "null"
+              ]
+            },
+            {
+              "name": "is_error",
+              "type": "boolean"
+            },
+            {
+              "name": "warnings",
+              "type": [
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "record",
+                      "name": "warnings",
+                      "namespace": "topLevelRecord.result",
+                      "fields": [
+                        {
+                          "name": "code",
+                          "type": ["string", "null"]
+                        },
+                        {
+                          "name": "message",
+                          "type": ["string", "null"]
+                        }
+                      ]
+                    },
+                    "null"
+                  ]
+                },
+                "null"
+              ]
+            },
+            {
+              "name": "entities",
+              "type": [
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "record",
+                      "name": "entities",
+                      "namespace": "topLevelRecord.result",
+                      "fields": [
+                        {
+                          "name": "offset",
+                          "type": ["int", "null"]
+                        },
+                        {
+                          "name": "length",
+                          "type": ["int", "null"]
+                        },
+                        {
+                          "name": "text",
+                          "type": ["string", "null"]
+                        },
+                        {
+                          "name": "category",
+                          "type": ["string", "null"]
+                        },
+                        {
+                          "name": "confidence_score",
+                          "type": ["float", "null"]
+                        },
+                        {
+                          "name": "data_sources",
+                          "type": [
+                            {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "record",
+                                  "name": "data_sources",
+                                  "namespace": "topLevelRecord.result.entities",
+                                  "fields": [
+                                    {
+                                      "name": "entity_id",
+                                      "type": ["string", "null"]
+                                    },
+                                    {
+                                      "name": "name",
+                                      "type": ["string", "null"]
+                                    }
+                                  ]
+                                },
+                                "null"
+                              ]
+                            },
+                            "null"
+                          ]
+                        },
+                        {
+                          "name": "assertion",
+                          "type": [
+                            {
+                              "type": "record",
+                              "name": "assertion",
+                              "namespace": "topLevelRecord.result.entities",
+                              "fields": [
+                                {
+                                  "name": "conditionality",
+                                  "type": ["string", "null"]
+                                },
+                                {
+                                  "name": "certainty",
+                                  "type": ["string", "null"]
+                                },
+                                {
+                                  "name": "association",
+                                  "type": ["string", "null"]
+                                }
+                              ]
+                            },
+                            "null"
+                          ]
+                        }
+                      ]
+                    },
+                    "null"
+                  ]
+                },
+                "null"
+              ]
+            },
+            {
+              "name": "entity_relations",
+              "type": [
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "record",
+                      "name": "entity_relations",
+                      "namespace": "topLevelRecord.result",
+                      "fields": [
+                        {
+                          "name": "relation_type",
+                          "type": ["string", "null"]
+                        },
+                        {
+                          "name": "roles",
+                          "type": [
+                            {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "record",
+                                  "name": "roles",
+                                  "namespace": "topLevelRecord.result.entity_relations",
+                                  "fields": [
+                                    {
+                                      "name": "name",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "name": "entity",
+                                      "type": {
+                                        "type": "record",
+                                        "name": "entity",
+                                        "namespace": "topLevelRecord.result.entity_relations.roles",
+                                        "fields": [
+                                          {
+                                            "name": "offset",
+                                            "type": ["int", "null"]
+                                          },
+                                          {
+                                            "name": "length",
+                                            "type": ["int", "null"]
+                                          },
+                                          {
+                                            "name": "text",
+                                            "type": ["string", "null"]
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                },
+                                "null"
+                              ]
+                            },
+                            "null"
+                          ]
+                        }
+                      ]
+                    },
+                    "null"
+                  ]
+                },
+                "null"
+              ]
+            },
+            {
+              "name": "statistics",
+              "type": [
+                {
+                  "type": "record",
+                  "name": "statistics",
+                  "namespace": "topLevelRecord.result",
+                  "fields": [
+                    {
+                      "name": "character_count",
+                      "type": ["int", "null"]
+                    },
+                    {
+                      "name": "transaction_count",
+                      "type": ["int", "null"]
+                    }
+                  ]
+                },
+                "null"
+              ]
+            },
+            {
+              "name": "nlp_last_executed",
+              "type": [
+                {
+                  "type": "long",
+                  "logicalType": "timestamp-micros"
+                },
+                "null"
+              ]
+            },
+            {
+              "name": "fhir_bundle",
+              "type": ["string", "null"]
+            }
+          ]
+        },
+        "null"
+      ]
+    },
+    {
+      "name": "is_error",
+      "type": ["boolean", "null"]
+    }
+  ]
+}

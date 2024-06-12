@@ -1,0 +1,40 @@
+{
+    "name": "NLP FHIR bundle  column configuration",
+    "description": "FHIR bundle are extracted from an unstructured text using TA4H",
+    "retainSourceColumns": false,
+    "extendWithDefaultRules": false,
+    "columns": [
+        {
+            "name": "id",
+            "style": "col",
+            "expression": "id"
+        },
+        {
+            "name": "parent_meta_lastUpdated",
+            "style": "col",
+            "expression": "meta_lastUpdated"
+        },
+        {
+            "name": "fhir_bundle",
+            "style": "col",
+            "expression": "result.fhir_bundle"
+        },
+        {
+            "name": "nlp_last_executed",
+            "style": "col",
+            "expression": "result.nlp_last_executed"
+        }
+    ],
+    "normalization": [
+        {
+          "name": "parent_meta_lastUpdated",
+          "type": "date",
+          "preservePreviousValue": false
+        },
+        {
+            "name": "nlp_last_executed",
+            "type": "date",
+            "preservePreviousValue": false
+        }
+    ]
+}

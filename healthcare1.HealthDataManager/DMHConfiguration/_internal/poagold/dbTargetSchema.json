@@ -1,0 +1,882 @@
+[
+    {
+        "namespace": {
+            "databaseName": "POAnalytics"
+        },
+        "tableType": "EXTERNAL",
+        "storageDescriptor": {
+            "columns": [
+                {
+                    "name": "JourneyKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": false,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The unique identifier of a Journey."
+                        }
+                    }
+                },
+                {
+                    "name": "Name",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 256,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The name of the Journey."
+                        }
+                    }
+                },
+                {
+                    "name": "Status",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 256,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The status of the Journey."
+                        }
+                    }
+                },
+                {
+                    "name": "ServiceLineKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Service Line Id of the Journey."
+                        }
+                    }
+                },
+                {
+                    "name": "StartDate",
+                    "originDataTypeName": {
+                        "typeName": "timestamp",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "timestampFormat": "yyyy-MM-ddTHH:mm:ssZ",
+                            "description": "Start Date time of the Journey."
+                        }
+                    }
+                }
+            ]
+        },
+        "name": "journeydim",
+        "entityType": "TABLE",
+        "properties": {
+            "businessArea": "Party",
+            "path": "journeydim",
+            "description": "",
+            "displayName": "journeydim",
+            "isDay0Entity": "False",
+            "fromBusinessAreas": "Party",
+            "primaryKeys": "JourneyKey",
+            "industries": "",
+            "relationships": "[{\"joinPairs\":[{\"fromAttribute\":\"ServiceLineKey\",\"toAttribute\":\"ServiceLineKey\"}],\"fromEntity\":\"journeydim\",\"toEntity\":\"servicelinedim\"}]"
+        }
+    },
+    {
+        "namespace": {
+            "databaseName": "POAnalytics"
+        },
+        "tableType": "EXTERNAL",
+        "storageDescriptor": {
+            "columns": [
+                {
+                    "name": "PatientKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": false,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The unique identifier of a Patient."
+                        }
+                    }
+                },
+                {
+                    "name": "FirstName",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "length": 256,
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The first name of the FHIR Patient."
+                        }
+                    }
+                },
+                {
+                    "name": "LastName",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "length": 256,
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The last name of the FHIR Patient."
+                        }
+                    }
+                }
+            ]
+        },
+        "name": "patientdim",
+        "entityType": "TABLE",
+        "properties": {
+            "businessArea": "FHIR",
+            "path": "patientdim",
+            "description": "",
+            "displayName": "patientdim",
+            "isDay0Entity": "False",
+            "fromBusinessAreas": "FHIR",
+            "primaryKeys": "PatientKey",
+            "industries": "",
+            "relationships": "[]"
+        }
+    },
+    {
+        "namespace": {
+            "databaseName": "POAnalytics"
+        },
+        "tableType": "EXTERNAL",
+        "storageDescriptor": {
+            "columns": [
+                {
+                    "name": "AppointmentKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": false,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The unique identifier of an Appointment."
+                        }
+                    }
+                },
+                {
+                    "name": "LocationKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Location ID of the Appointment."
+                        }
+                    }
+                },
+                {
+                    "name": "AppointmentStartDate",
+                    "originDataTypeName": {
+                        "typeName": "timestamp",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "timestampFormat": "yyyy-MM-ddTHH:mm:ssZ",
+                            "description": "Start Date time of the Appointment."
+                        }
+                    }
+                },
+                {
+                    "name": "AppointmentEndDate",
+                    "originDataTypeName": {
+                        "typeName": "timestamp",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "timestampFormat": "yyyy-MM-ddTHH:mm:ssZ",
+                            "description": "End Date time of the Appointment."
+                        }
+                    }
+                },
+                {
+                    "name": "AppointmentScheduledDate",
+                    "originDataTypeName": {
+                        "typeName": "timestamp",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "timestampFormat": "yyyy-MM-ddTHH:mm:ssZ",
+                            "description": "Scheduled Date time of the Appointment."
+                        }
+                    }
+                },
+                {
+                    "name": "PatientKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Patient ID of the Appointment."
+                        }
+                    }
+                },
+                {
+                    "name": "ServiceLineKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Service Line Id of the Appointment."
+                        }
+                    }
+                }
+            ]
+        },
+        "name": "appointmentdim",
+        "entityType": "TABLE",
+        "properties": {
+            "businessArea": "FHIR",
+            "path": "appointmentdim",
+            "description": "",
+            "displayName": "appointmentdim",
+            "isDay0Entity": "False",
+            "fromBusinessAreas": "FHIR",
+            "primaryKeys": "AppointmentKey",
+            "industries": "",
+            "relationships": "[{\"joinPairs\":[{\"fromAttribute\":\"LocationKey\",\"toAttribute\":\"LocationKey\"}],\"fromEntity\":\"appointmentdim\",\"toEntity\":\"locationdim\"},{\"joinPairs\":[{\"fromAttribute\":\"PatientKey\",\"toAttribute\":\"PatientKey\"}],\"fromEntity\":\"appointmentdim\",\"toEntity\":\"patientdim\"},{\"joinPairs\":[{\"fromAttribute\":\"ServiceLineKey\",\"toAttribute\":\"ServiceLineKey\"}],\"fromEntity\":\"appointmentdim\",\"toEntity\":\"servicelinedim\"}]"
+        }
+    },
+    {
+        "namespace": {
+            "databaseName": "POAnalytics"
+        },
+        "tableType": "EXTERNAL",
+        "storageDescriptor": {
+            "columns": [
+                {
+                    "name": "AppointmentTransitionKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": false,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The unique identifier of an AppointmentTransitionFact."
+                        }
+                    }
+                },
+                {
+                    "name": "AppointmentKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": false,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The unique identifier of an Appointmentdim."
+                        }
+                    }
+                },
+                {
+                    "name": "Status",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 256,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The status of the Appointment."
+                        }
+                    }
+                }
+                
+            ]
+        },
+        "name": "appointmenttransitionfact",
+        "entityType": "TABLE",
+        "properties": {
+            "businessArea": "FHIR",
+            "path": "appointmenttransitionfact",
+            "description": "",
+            "displayName": "appointmenttransitionfact",
+            "isDay0Entity": "False",
+            "fromBusinessAreas": "FHIR",
+            "primaryKeys": "AppointmentTransitionKey",
+            "industries": "",
+            "relationships": "[{\"joinPairs\":[{\"fromAttribute\":\"AppointmentKey\",\"toAttribute\":\"AppointmentKey\"}],\"fromEntity\":\"appointmenttransitionfact\",\"toEntity\":\"appointmentdim\"}]"
+        }
+    },
+    {
+        "namespace": {
+            "databaseName": "POAnalytics"
+        },
+        "tableType": "EXTERNAL",
+        "storageDescriptor": {
+            "columns": [
+                {
+                    "name": "EncounterKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": false,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The unique identifier of an Encounter."
+                        }
+                    }
+                },
+                {
+                    "name": "EncounterStatus",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 256,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The status of the Encounter."
+                        }
+                    }
+                },
+                {
+                    "name": "EncounterStartDate",
+                    "originDataTypeName": {
+                        "typeName": "timestamp",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "timestampFormat": "yyyy-MM-ddTHH:mm:ssZ",
+                            "description": "Start Date time of the Encounter."
+                        }
+                    }
+                },
+                {
+                    "name": "EncounterEndDate",
+                    "originDataTypeName": {
+                        "typeName": "timestamp",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "timestampFormat": "yyyy-MM-ddTHH:mm:ssZ",
+                            "description": "End Date time of the Encounter."
+                        }
+                    }
+                },
+                {
+                    "name": "PatientKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Patient ID of the Encounter."
+                        }
+                    }
+                },
+                {
+                    "name": "AppointmentKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Appointment ID of the Encounter, if exists."
+                        }
+                    }
+                },
+                {
+                    "name": "ServiceLineKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Service Line ID of the Encounter."
+                        }
+                    }
+                }
+            ]
+        },
+        "name": "encounterdim",
+        "entityType": "TABLE",
+        "properties": {
+            "businessArea": "FHIR",
+            "path": "encounterdim",
+            "description": "",
+            "displayName": "encounterdim",
+            "isDay0Entity": "False",
+            "fromBusinessAreas": "FHIR",
+            "primaryKeys": "EncounterKey",
+            "industries": "",
+            "relationships": "[{\"joinPairs\":[{\"fromAttribute\":\"AppointmentKey\",\"toAttribute\":\"AppointmentKey\"}],\"fromEntity\":\"encounterdim\",\"toEntity\":\"appointmentdim\"},{\"joinPairs\":[{\"fromAttribute\":\"PatientKey\",\"toAttribute\":\"PatientKey\"}],\"fromEntity\":\"encounterdim\",\"toEntity\":\"patientdim\"},{\"joinPairs\":[{\"fromAttribute\":\"ServiceLineKey\",\"toAttribute\":\"ServiceLineKey\"}],\"fromEntity\":\"encounterdim\",\"toEntity\":\"servicelinedim\"}]"
+        }
+    },
+    {
+        "namespace": {
+            "databaseName": "POAnalytics"
+        },
+        "tableType": "EXTERNAL",
+        "storageDescriptor": {
+            "columns": [
+                {
+                    "name": "LocationKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": false,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The unique identifier of a Location."
+                        }
+                    }
+                },
+                {
+                    "name": "LocationName",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 256,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The name of the Location."
+                        }
+                    }
+                },
+                {
+                    "name": "City",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 256,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Location city"
+                        }
+                    }
+                },
+                {
+                    "name": "Country",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 256,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Location country"
+                        }
+                    }
+                },
+                {
+                    "name": "Street",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 512,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Location street address"
+                        }
+                    }
+                },
+                {
+                    "name": "Zipcode",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 20,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Location zipcode"
+                        }
+                    }
+                }
+            ]
+        },
+        "name": "locationdim",
+        "entityType": "TABLE",
+        "properties": {
+            "businessArea": "FHIR",
+            "path": "locationdim",
+            "description": "",
+            "displayName": "locationdim",
+            "isDay0Entity": "False",
+            "fromBusinessAreas": "FHIR",
+            "primaryKeys": "LocationKey",
+            "industries": "",
+            "relationships": "[]"
+        }
+    },
+    {
+        "namespace": {
+            "databaseName": "POAnalytics"
+        },
+        "tableType": "EXTERNAL",
+        "storageDescriptor":{
+            "columns":[
+                {
+                    "name":"AttributionModelKey",
+                    "originDataTypeName":{
+                        "typeName":"integer",
+                        "isNullable":false,
+                        "properties":{
+                            "minValue":null,
+                            "maxValue":null,
+                            "description":"The unique identifier of an AttributionModel."
+                        }
+                    }
+                },
+                {
+                    "name":"AttributionModelName",
+                    "originDataTypeName":{
+                        "typeName":"string",
+                        "isNullable":true,
+                        "length":256,
+                        "properties":{
+                            "minValue":null,
+                            "maxValue":null,
+                            "description":"The name of the AttributionModel."
+                        }
+                    }
+                }
+            ]
+        },
+        "name":"attributionmodeldim",
+        "entityType":"TABLE",
+        "properties":{
+            "businessArea":"Marketing",
+            "path":"attributionmodeldim",
+            "description":"",
+            "displayName":"attributionmodeldim",
+            "isDay0Entity":"False",
+            "fromBusinessAreas":"Marketing",
+            "primaryKeys":"AttributionModelKey",
+            "industries":"",
+            "relationships":"[]"
+        }
+    },
+    {
+        "namespace": {
+            "databaseName": "POAnalytics"
+        },
+        "tableType": "EXTERNAL",
+        "storageDescriptor": {
+            "columns": [
+                {
+                    "name": "ServiceLineKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": false,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The unique identifier of a ServiceLine."
+                        }
+                    }
+                },
+                {
+                    "name": "Name",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 256,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The name of the Location."
+                        }
+                    }
+                },
+                {
+                    "name": "ServiceLineNum",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": false,
+                        "length": 256,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Service Line Original Code"
+                        }
+                    }
+                }
+            ]
+        },
+        "name": "servicelinedim",
+        "entityType": "TABLE",
+        "properties": {
+            "businessArea": "FHIR",
+            "path": "servicelinedim",
+            "description": "",
+            "displayName": "servicelinedim",
+            "isDay0Entity": "False",
+            "fromBusinessAreas": "FHIR",
+            "primaryKeys": "ServiceLineKey",
+            "industries": "",
+            "relationships": "[]"
+        }
+    },
+    {
+        "namespace": {
+            "databaseName": "POAnalytics"
+        },
+        "tableType": "EXTERNAL",
+        "storageDescriptor": {
+            "columns": [
+                {
+                    "name": "ChannelKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": false,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The unique identifier of a Marketing Channel."
+                        }
+                    }
+                },
+                {
+                    "name": "ChannelName",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 256,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The name of the Marketing Channel."
+                        }
+                    }
+                },
+                {
+                    "name": "ChannelAction",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 256,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The name of the action in the Marketing Channel."
+                        }
+                    }
+                }
+            ]
+        },
+        "name": "marketingchanneldim",
+        "entityType": "TABLE",
+        "properties": {
+            "businessArea": "Marketing",
+            "path": "marketingchanneldim",
+            "description": "",
+            "displayName": "marketingchanneldim",
+            "isDay0Entity": "False",
+            "fromBusinessAreas": "Marketing",
+            "primaryKeys": "ChannelKey",
+            "industries": "",
+            "relationships": "[]"
+        }
+    },
+    {
+        "namespace": {
+            "databaseName": "POAnalytics"
+        },
+        "tableType": "EXTERNAL",
+        "storageDescriptor": {
+            "columns": [
+                {
+                    "name": "AssetKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": false,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The unique identifier of a Marketing Asset."
+                        }
+                    }
+                },
+                {
+                    "name": "AssetName",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 256,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The name of the Marketing Asset."
+                        }
+                    }
+                },
+                {
+                    "name": "AssetType",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 256,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The type of the Marketing Asset."
+                        }
+                    }
+                }
+            ]
+        },
+        "name": "marketingassetdim",
+        "entityType": "TABLE",
+        "properties": {
+            "businessArea": "Marketing",
+            "path": "marketingassetdim",
+            "description": "",
+            "displayName": "marketingassetdim",
+            "isDay0Entity": "False",
+            "fromBusinessAreas": "Marketing",
+            "primaryKeys": "AssetKey",
+            "industries": "",
+            "relationships": "[]"
+        }
+    },
+    {
+        "namespace": {
+            "databaseName": "POAnalytics"
+        },
+        "tableType": "EXTERNAL",
+        "storageDescriptor": {
+            "columns": [
+                {
+                    "name": "MarketingEventKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": false,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The unique identifier of a MarketingEventFact."
+                        }
+                    }
+                },
+                {
+                    "name": "AppointmentKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Appointment ID of the MarketingEventFact."
+                        }
+                    }
+                },
+                {
+                    "name": "JourneyKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Journey ID of the MarketingEventFact."
+                        }
+                    }
+                },
+                {
+                    "name": "ChannelKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "Channel ID of the MarketingEventFact."
+                        }
+                    }
+                },
+                {
+                    "name": "AssetKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The Asset ID of the MarketingEventFact."
+                        }
+                    }
+                },
+                {
+                    "name": "PatientKey",
+                    "originDataTypeName": {
+                        "typeName": "integer",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The patient of the MarketingEventFact."
+                        }
+                    }
+                },
+                {
+                    "name": "EventDate",
+                    "originDataTypeName": {
+                        "typeName": "timestamp",
+                        "isNullable": true,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "timestampFormat": "yyyy-MM-ddTHH:mm:ssZ",
+                            "description": "The date of the MarketingEventFact."
+                        }
+                    }
+                },
+                {
+                    "name": "EventMonthYear",
+                    "originDataTypeName": {
+                        "typeName": "string",
+                        "isNullable": true,
+                        "length": 50,
+                        "properties": {
+                            "minValue": null,
+                            "maxValue": null,
+                            "description": "The date of the MarketingEventFact in format Month-Year."
+                        }
+                    }
+                }
+            ]
+        },
+        "name": "marketingeventfact",
+        "entityType": "TABLE",
+        "properties": {
+            "businessArea": "Marketing",
+            "path": "marketingeventfact",
+            "description": "",
+            "displayName": "marketingeventfact",
+            "isDay0Entity": "False",
+            "fromBusinessAreas": "Marketing",
+            "primaryKeys": "MarketingEventKey",
+            "industries": "",
+            "relationships": "[{\"joinPairs\":[{\"fromAttribute\":\"AppointmentKey\",\"toAttribute\":\"AppointmentKey\"}],\"fromEntity\":\"marketingeventfact\",\"toEntity\":\"appointmentdim\"},{\"joinPairs\":[{\"fromAttribute\":\"JourneyKey\",\"toAttribute\":\"JourneyKey\"}],\"fromEntity\":\"marketingeventfact\",\"toEntity\":\"journeydim\"},{\"joinPairs\":[{\"fromAttribute\":\"PatientKey\",\"toAttribute\":\"PatientKey\"}],\"fromEntity\":\"marketingeventfact\",\"toEntity\":\"patientdim\"},{\"joinPairs\":[{\"fromAttribute\":\"AssetKey\",\"toAttribute\":\"AssetKey\"}],\"fromEntity\":\"marketingeventfact\",\"toEntity\":\"marketingassetdim\"},{\"joinPairs\":[{\"fromAttribute\":\"ChannelKey\",\"toAttribute\":\"ChannelKey\"}],\"fromEntity\":\"marketingeventfact\",\"toEntity\":\"marketingchanneldim\"}]"
+        }
+    }
+]

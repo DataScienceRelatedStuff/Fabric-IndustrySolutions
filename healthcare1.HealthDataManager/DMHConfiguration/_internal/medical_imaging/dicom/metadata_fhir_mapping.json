@@ -1,0 +1,75 @@
+{
+    "meta": {
+        "lastUpdated": "current_timestamp()"
+    },
+    "resourceType": "lit('ImagingStudy')",
+    "status": "lit('available')",
+    "identifier": [
+        {
+            "system": "lit('urn:dicom:uid')",
+            "value": "col('StudyInstanceUID')"
+        },
+        {
+            "type": {
+                "coding": [{
+                    "system": "lit('http://terminology.hl7.org/CodeSystem/v2-0203')",
+                    "code": "lit('ACSN')"
+                }]
+            },
+            "value": "col('AccessionNumber')"
+        }
+    ],
+    "started": {
+        "tag": "StudyDate,StudyTime,TimezoneOffsetFromUTC",
+        "calc": "concat_ws(' ', col('StudyDate'), col('StudyTime'), col('TimezoneOffsetFromUTC'))"
+    },
+    "modality": [{
+        "code": "col('ModalitiesInStudy')"
+    }],
+    "description": "col('StudyDescription')",
+    "subject": {
+        "identifier": {
+            "type": {
+                "coding": [{
+                    "system": "lit('http://terminology.hl7.org/CodeSystem/v2-0203')",
+                    "code": "lit('MR')"
+                }]
+            },
+            "value": "col('PatientID')"
+        },
+        "type": "lit('Patient')"
+    },
+    "numberOfInstances": "col('NumberOfStudyRelatedInstances')",
+    "numberOfSeries": "col('NumberOfStudyRelatedSeries')",
+    "series": [{
+        "uid": "col('SeriesInstanceUID')",
+        "started": {
+            "tag": "SeriesDate,SeriesTime,TimezoneOffsetFromUTC",
+            "calc": "concat_ws(' ', col('SeriesDate'), col('SeriesTime'), col('TimezoneOffsetFromUTC'))"
+        },
+        "modality": {
+            "code": "col('Modality')"
+        },
+        "laterality": {
+            "display": "col('Laterality')"
+        },
+        "bodySite": {
+            "display": "col('BodyPartExamined')"
+        },
+        "numberOfInstances": "col('NumberOfSeriesRelatedInstances')",
+        "description": "col('SeriesDescription')",
+        "number": "col('SeriesNumber')",
+        "instance": [{
+            "uid": "col('SOPInstanceUID')",
+            "sopClass": {
+                "code": "col('SOPClassUID')"
+            },
+            "number": "col('InstanceNumber')",
+            "title": "col('DocumentTitle')",
+            "extension": [{
+                "url": "lit('onelake_abfs_path')",
+                "valueUrl": "col('FilePath')"
+            }]
+        }]
+    }]
+}

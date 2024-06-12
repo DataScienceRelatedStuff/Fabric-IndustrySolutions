@@ -1,0 +1,29 @@
+{
+    "name": "NLP Results configuration",
+    "resources": [
+        {
+            "name": "NLPEntity",
+            "schema": {
+                "type": "avro",
+                "path": "nlp.schema.avsc"
+            },
+            "flattenSchemaFile": "nlp.entity.columnsconfig.json"
+        },
+        {
+            "name": "NLPRelationship",
+            "schema": {
+                "type": "avro",
+                "path": "nlp.schema.avsc"
+            },
+            "flattenSchemaFile": "nlp.entityrelationship.columnsconfig.json"
+        },
+        {
+            "name": "NLPFHIR",
+            "schema": {
+                "type": "avro",
+                "path": "nlp.schema.avsc"
+            },
+            "flattenSchemaFile": "nlp.fhir.columnsconfig.json"
+        }
+    ]
+}
